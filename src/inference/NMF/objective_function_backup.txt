@@ -1,0 +1,105 @@
+def objective_single_layer_phase(params, mask_idx, scatter_idx, node_idx, N, C, n_succ_edges,
+                                 delta_spatial_dist, delta_t, delta_genome_dist,
+                                 include_spatial_dist=True, include_genome_dist=True, include_epsilon=True):
+    #print("started objective_single_layer_phase")
+    print("-------")
+    print("include_spatial_dist:", include_spatial_dist)
+    device = torch.device('mps' if torch.backends.mps.is_available() else 'cpu')
+    ##beta = -0.001 # fixed for now >> for spatial dist
+    beta = 0.001  # fixed for now >> for spatial dist
+    #gamma = -1  # fixed for now >> for genome dist
+    gamma = 0.01
+
+    alpha_p = torch.sigmoid(params[:n_succ_edges])
+    if include_epsilon:
+        eps_p = torch.sigmoid(params[(n_succ_edges):(n_succ_edges + N)])
+
+    alpha_p_adj = alpha_p # not including 'delta_spatial_dist' and 'delta_spatial_dist'
+    #print(alpha_p_adj[:20])
+    #print(delta_spatial_dist[:20])
+    if include_spatial_dist and not include_genome_dist:
+        #print("entered spatial")
+        #delta_spatial_dist_adj = 1 - torch.exp(delta_spatial_dist*beta)
+        delta_norm_spatial_dist = torch.sigmoid((torch.log(delta_spatial_dist/1000)))
+        alpha_p_adj = beta * alpha_p * torch.exp(-beta * delta_norm_spatial_dist)
+        #delta_spatial_dist_adj = torch.exp(delta_spatial_dist * beta)
+        #alpha_p_adj = alpha_p * delta_spatial_dist_adj
+        #print(alpha_p_adj[:20])
+    elif include_spatial_dist and include_genome_dist:
+        #print("entered spatial and genome")
+        # TODO delta_spatial_dist_adj = 1 - torch.exp(delta_spatial_dist*beta)
+        #alpha_p_adj = alpha_p * torch.exp(delta_spatial_dist*beta + gamma*delta_spatial_dist)
+        delta_norm_spatial_dist = torch.sigmoid((torch.log(delta_spatial_dist / 1000)))
+        alpha_p_adj = gamma * beta * alpha_p * torch.exp(-beta * delta_norm_spatial_dist) * torch.exp(-gamma * delta_genome_dist)
+
+    hazard_alpha_p_adj_delta_t = alpha_p_adj * delta_t
+
+    H = torch.zeros(N * C, device=device)  # hazard func
+    for c in range(C):
+        # mask_idx[c]: index of succ edges on cascade c
+        H.scatter_add_(dim=0, index=scatter_idx[c], src=hazard_alpha_p_adj_delta_t.index_select(0, mask_idx[c]))  # dim 0: line-wise
+
+    if include_epsilon:
+        # postprocessing for unobserved source factor (multiplying each node j by its epsilon value)
+        for c in range(C):
+            # contribution from H_0 for unobserved source factor
+            H.scatter_add_(dim=0, index=scatter_idx[c], src=eps_p.index_select(0, node_idx[c]))  # dim 0: line-wise
+
+    if include_epsilon:
+        # postprocessing for unobserved source factor (multiplying each node j by its epsilon value)
+        # since MPS does not support torch.scatter_reduce, this is a workaround
+        S0_on_H = torch.zeros(N * C, device=device)  # hazard func
+        for c in range(C):
+            # contribution from S_0 for unobserved source factor
+            S0_on_H.scatter_add_(dim=0, index=scatter_idx[c], src=eps_p.index_select(0, node_idx[c]))
+            #H = torch.scatter_reduce(H, dim=0, index=scatter_idx[c], src=eps_p.index_select(0, node_idx[c]), reduce="prod", include_self=True)
+        H = H*S0_on_H
+
+    # # postprocessing for unobserved source factor (multiplying each node j by its epsilon value)
+    # for c in range(C):
+    #     for j in range(N):
+    #         eps_j = eps_p[j]
+    #         indx = j * C + c
+    #         H[indx] += eps_j
+    #         H[indx] *= eps_j # contribution from S_0 for unobserved source factor
+
+    H_nonzero = H[H != 0]
+
+    # ----------------------------------------------------
+
+    survival_alpha_p_adj_delta_t = alpha_p * 0.5 * (delta_t ** 2) # survival func
+    if include_spatial_dist and not include_genome_dist:
+        #print("entered spatial")
+        #delta_spatial_dist_adj = 1 - torch.exp(delta_spatial_dist * beta)
+        #delta_spatial_dist_adj = torch.exp(delta_spatial_dist * beta)
+        survival_alpha_p_adj_delta_t = (1/beta) * survival_alpha_p_adj_delta_t  # survival func
+    elif include_spatial_dist and include_genome_dist:
+        #print("entered spatial and genome")
+        # TODO delta_spatial_dist_adj = 1 - torch.exp(delta_spatial_dist * beta)
+        #survival_alpha_p_adj_delta_t = alpha_p * 0.5 * (delta_t ** 2) * torch.exp(delta_spatial_dist*beta + gamma*delta_genome_dist)  # survival func
+        survival_alpha_p_adj_delta_t = (1 / beta) * (1 / gamma) * survival_alpha_p_adj_delta_t  # survival func
+
+    S = torch.zeros(N * C, device=device)  # hazard func
+    for c in range(C):
+        # mask_idx[c]: index of succ edges on cascade c
+        S.scatter_add_(dim=0, index=scatter_idx[c], src=survival_alpha_p_adj_delta_t.index_select(0, mask_idx[c]))  # dim 0: line-wise
+
+    if include_epsilon:
+        # postprocessing for unobserved source factor (multiplying each node j by its epsilon value)
+        S0_on_S = torch.zeros(N * C, device=device)  # hazard func
+        for c in range(C):
+            # contribution from S_0 for unobserved source factor
+            S0_on_S.scatter_add_(dim=0, index=scatter_idx[c], src=eps_p.index_select(0, node_idx[c]))
+            #S = torch.scatter_reduce(S, dim=0, index=scatter_idx[c], src=eps_p.index_select(0, node_idx[c]), reduce="prod", include_self=True)
+        S = S * S0_on_S
+
+    # # postprocessing for unobserved source factor (multiplying each node j by its epsilon value)
+    # for c in range(C):
+    #     for j in range(N):
+    #         eps_j = eps_p[j]
+    #         indx = j * C + c
+    #         S[indx] *= eps_j
+
+    #print("finished objective_single_layer_phase")
+    #return torch.sum(S) - torch.sum(torch.log(H_nonzero))
+    return torch.sum(S) - torch.sum(torch.log(H_nonzero))

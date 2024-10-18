@@ -1,0 +1,208 @@
+;nationality;country_name;country_code
+0;Afghan;Afghanistan;AFG
+1;Albanian;Albania;ALB
+2;Algerian;Algeria;DZA
+3;American;United States;USA
+4;Andorran;Andorra;AND
+5;Angolan;Angola;AGO
+6;Anguillan;Anguilla;AIA
+7;Argentine;Argentina;ARG
+8;Armenian;Armenia;ARM
+9;Australian;Australia;AUS
+10;Austrian;Austria;AUT
+11;Azerbaijani;Azerbaijan;AZE
+12;Bahamian;Bahamas;BHS
+13;Bahraini;Bahrain;BHR
+14;Bangladeshi;Bangladesh;BGD
+15;Barbadian;Barbados;BRB
+16;Belarusian;Belarus;BLR
+17;Belgian;Belgium;BEL
+18;Belizean;Belize;BLZ
+19;Beninese;Benin;BEN
+20;Bermudian;Bermuda;BMU
+21;Bhutanese;Bhutan;BTN
+22;Bolivian;Bolivia;BOL
+23;Botswanan;Botswana;BWA
+24;Brazilian;Brazil;BRA
+25;British;United Kingdom;GBR
+26;Bruneian;Brunei;BRN
+27;Bulgarian;Bulgaria;BGR
+28;Burkinan;Burkina Faso;BFA
+29;Burmese;Myanmar;MMR
+30;Burundian;Burundi;BDI
+31;Cambodian;Cambodia;KHM
+32;Cameroonian;Cameroon;CMR
+33;Canadian;Canada;CAN
+34;Cape Verdean;Cape Verde;CPV
+35;Cayman Islander;Cayman Islands;CYM
+36;Central African;Central African Republic;CAF
+37;Chadian;Chad;TCD
+38;Chilean;Chile;CHL
+39;Chinese;China;CHN
+40;Colombian;Colombia;COL
+41;Comoran;Comoros;COM
+42;Congolese;Congo;COG
+43;Cook Islander;Cook Islands;COK
+44;Costa Rican;Costa Rica;CRI
+45;Croatian;Croatia;HRV
+46;Cuban;Cuba;CUB
+47;Cypriot;Cyprus;CYP
+48;Czech;Czech Republic;CZE
+49;Danish;Danemark;DNK
+50;Djiboutian;Djibouti;DJI
+51;Dominican;Dominica;DMA
+52;Dutch;Netherlands;NLD
+53;East Timorese;East Timor;TMP
+54;Ecuadorean;Ecuador;ECU
+55;Egyptian;Egypt;EGY
+56;Emirati;United Arab Emirates;ARE
+57;English;England;GBR
+58;Equatorial Guinean;Equatorial Guinea;GNQ
+59;Eritrean;Eritrea;ERI
+60;Estonian;Estonia;EST
+61;Ethiopian;Ethiopia;ETH
+62;Faroese;Faroe Islands;FRO
+63;Fijian;Fiji;FJI
+64;Filipino;Philippines;PHL
+65;Finnish;Finland;FIN
+66;French;France;FRA
+67;Gabonese;Gabon;GAB
+68;Gambian;Gambia;GMB
+69;Georgian;Georgia;GEO
+70;German;Germany;DEU
+71;Ghanaian;Ghana;GHA
+72;Gibraltarian;Gibraltar;GIB
+73;Greek;Greece;GRC
+74;Greenlandic;Greenland;GRL
+75;Grenadian;Grenada;GRD
+76;Guatemalan;Guatemala;GTM
+77;Guinean;Guinea;GIN
+78;Guyanese;Guyana;GUY
+79;Haitian;Haiti;HTI
+80;Honduran;Honduras;HND
+81;Hong Konger;Hong Kong;HKG
+82;Hungarian;Hungary;HUN
+83;Icelandic;Iceland;ISL
+84;Indian;India;IND
+85;Indonesian;Indonesia;IDN
+86;Iranian;Iran;IRN
+87;Iraqi;Iraq;IRQ
+88;Irish;Ireland;IRL
+89;Israeli;Israel;ISR
+90;Italian;Italy;ITA
+91;Ivorian;Ivory Coast;CIV
+92;Jamaican;Jamaica;JAM
+93;Japanese;Japan;JPN
+94;Jordanian;Jordan;JOR
+95;Kazakh;Kazakhstan;KAZ
+96;Kenyan;Kenya;KEN
+97;Kittitian;Saint Kitts and Nevis;KNA
+98;Kosovan;Kosovo;XKX
+99;Kuwaiti;Kuwait;KWT
+100;Kyrgyz;Kyrgyzstan;KGZ
+101;Lao;Laos;LAO
+102;Latvian;Latvia;LVA
+103;Lebanese;Lebanon;LBN
+104;Liberian;Liberia;LBR
+105;Libyan;Libya;LBY
+106;Liechtenstein citizen;Liechtenstein;LIE
+107;Lithuanian;Lithuania;LTU
+108;Luxembourger;Luxembourg;LUX
+109;Macanese;Macao;MAC
+110;Macedonian;Macedonia;MKD
+111;Malagasy;Madagascar;MDG
+112;Malawian;Malawi;MWI
+113;Malaysian;Malaysia;MYS
+114;Maldivian;Maldives;MDV
+115;Malian;Mali;MLI
+116;Maltese;Malta;MLT
+117;Marshallese;Marshall Islands;MHL
+118;Martiniquais;Martinique;MTQ
+119;Mauritanian;Mauritania;MRT
+120;Mauritian;Mauritius;MUS
+121;Mexican;Mexico;MEX
+122;Micronesian;Micronesia;FSM
+123;Moldovan;Moldova;MDA
+124;Monegasque;Monaco;MCO
+125;Mongolian;Mongolia;MNG
+126;Montenegrin;Montenegro;MNE
+127;Montserratian;Montserrat;MSR
+128;Moroccan;Morocco;MAR
+129;Mozambican;Mozambique;MOZ
+130;Namibian;Namibia;NAM
+131;Nauruan;Nauru;NRU
+132;Nepalese;Nepal;NPL
+133;New Zealander;New Zealand;NZL
+134;Nicaraguan;Nicaragua;NIC
+135;Nigerian;Nigeria;NGA
+136;Nigerien;Nigeria;NGA
+137;Niuean;Niue;NIU
+138;North Korean;North Korea;PRK
+139;Northern Irish;Northern Ireland;GBR
+140;Norwegian;Norway;NOR
+141;Omani;Oman;OMN
+142;Pakistani;Pakistan;PAK
+143;Palauan;Palau;PLW
+144;Palestinian;Palestine;PSE
+145;Panamanian;Panama;PAN
+146;Papua New Guinean;Papua New Guinea;PNG
+147;Paraguayan;Paraguay;PRY
+148;Peruvian;Peru;PER
+149;Polish;Poland;POL
+150;Portuguese;Portugal;PRT
+151;Puerto Rican;Puerto Rico;PRI
+152;Qatari;Qatar;QAT
+153;Romanian;Romania;ROU
+154;Russian;Russia;RUS
+155;Rwandan;Rwanda;RWA
+156;Salvadorean;El Salvador;SLV
+157;Sammarinese;San Marino;SMR
+158;Samoan;Samoa;WSM
+159;Sao Tomean;Sao Tome and Principe;STP
+160;Saudi Arabian;Saudi Arabia;SAU
+161;Scottish;Scotland;GBR
+162;Senegalese;Senegal;SEN
+163;Serbian;Serbia;SRB
+164;Sierra Leonean;Sierra Leone;SLE
+165;Singaporean;Singapore;SGP
+166;Slovak;Slovakia;SVK
+167;Slovenian;Slovenia;SVN
+168;Solomon Islander;Solomon Islands;SLB
+169;Somali;Somalia;SOM
+170;South African;South Africa;ZAF
+171;South Korean;South Korea;KOR
+172;South Sudanese;South Sudan;SSD
+173;Spanish;Spain;ESP
+174;Sri Lankan;Sri Lanka;LKA
+175;St Lucian;Saint Lucia;LCA
+176;Sudanese;Sudan;SDN
+177;Surinamese;Suriname;SUR
+178;Swazi;Eswatini;SWZ
+179;Swedish;Sweden;SWE
+180;Swiss;Switzerland;CHE
+181;Syrian;Syria;SYR
+182;Taiwanese;Taiwan;TWN
+183;Tajik;Tajikistan;TJK
+184;Tanzanian;Tanzania;TZA
+185;Thai;Thailand;THA
+186;Togolese;Togo;TGO
+187;Tongan;Tonga;TON
+188;Trinidadian;Trinidad and Tobago;TTO
+189;Tunisian;Tunisia;TUN
+190;Turkish;Turkey;TUR
+191;Turkmen;Turkmenistan;TKM
+192;Turks and Caicos Islander;Turks and Caicos Islands;TCA
+193;Tuvaluan;Tuvalu;TUV
+194;Ugandan;Uganda;UGA
+195;Ukrainian;Ukraine;UKR
+196;Uruguayan;Uruguay;URY
+197;Uzbek;Uzbekistan;UZB
+199;Venezuelan;Venezuela;VEN
+200;Vietnamese;Vietnam;VNM
+201;Vincentian;Saint Vincent and the Grenadines;VCT
+202;Wallisian;Wallis and Futuna;WLF
+203;Welsh;Wales;GBR
+204;Yemeni;Yemen;YEM
+205;Zambian;Zambia;ZMB
+206;Zimbabwean;Zimbabwe;ZWE
+207;Catalan;Spain;ESP
