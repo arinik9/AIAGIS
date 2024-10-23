@@ -1,2 +1,2 @@
-# AVIAGIS
-an improved AVian InfluenzA surveillance dataset with Genome Isolate Sequences
+# AIAGIS
+an improved Avian InfluenzA surveillance dataset with Genome Isolate Sequences
